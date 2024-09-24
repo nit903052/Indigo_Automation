@@ -14,6 +14,7 @@ public class TC_001_Login extends BaseClass
 	
 		Home_Page home = new Home_Page(driver);
 		home.Click_Booking_ad();
+		home.Click_Fest_PopUp();
 		home.Click_Login_button();
 		home.Click_Login_AS_Customer_button();
 		home.Txt_countryName(p.getProperty("countryName"));

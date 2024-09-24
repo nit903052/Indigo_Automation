@@ -72,7 +72,7 @@ public class BaseClass {
 	 
 	 
 	 
-	   @AfterClass
+	  @AfterClass
 		public void teardown()
 		{
 			driver.quit();

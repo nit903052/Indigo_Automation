@@ -8,7 +8,7 @@
 
 
   <test thread-count="5" name="Test">
-    <parameter name="browser" value="Firefox"/>
+    <parameter name="browser" value="firefox"/>
     <classes>
       <class name="testCase.TC_001_Login"/>
     </classes>

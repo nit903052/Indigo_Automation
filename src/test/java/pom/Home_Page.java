@@ -1,5 +1,7 @@
 package pom;
 
+import static org.testng.Assert.assertTrue;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Home_Page extends Basepage
 
@@ -25,6 +28,8 @@ public class Home_Page extends Basepage
 	@FindBy(xpath = "//span[@id='close']")
 	WebElement Booking_Ad;
 	
+	@FindBy (xpath = "//span[@id =\"flight-close\"]")   // To handle "GRAND RUNAWAY FEST" pop-up
+    WebElement Fest_pop_up;
 	
 	@FindBy(xpath = "//span[@id='usernameFirstLetter']")
 	WebElement Login_button;
@@ -67,7 +72,7 @@ public class Home_Page extends Basepage
 	 @FindBy(xpath="//button[@label='Submit OTP']")
 	 WebElement Login_button_after_password;
 	 
-	 public	boolean Status = true;
+    public	boolean Status = true;
 	public void Click_Booking_ad()
 	{
 	
@@ -82,6 +87,27 @@ public class Home_Page extends Basepage
 			return;
 		}
 	}
+	
+	public void Click_Fest_PopUp()
+	{
+	
+		try 
+		{
+		if(Fest_pop_up.isDisplayed()==Status)
+		{
+			Fest_pop_up.click();}
+		}
+		catch(Exception e)
+		{
+			return;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	  public void Input_Password_Txt(String Pass) {
 	    	Input_Password_Txt.sendKeys(Pass);
@@ -144,23 +170,29 @@ public void Click_Login_After_Entering_Password() {
     	
     	String targetElementXPath = "//*[@class='dynamiccontainer']//h1[text()='Hey MR ThankYou Indigo,']";
         
+    	
+    	
+    	//*[@class='dynamiccontainer']//h1[text()='Hey MR ThankYou Indigo,']
+    	
+    	
         int maxRetries = 10; 
         int retryCount = 0;
         
         while (retryCount < maxRetries) {
             try {
             	Login_button_after_password.click();
-                
                 WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(targetElementXPath)));
                 
                 if (targetElement.isDisplayed()) {
-                    System.out.println("Target element found!");
+                	System.out.println("Target element found!");
                     break;
                 }
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
 
                 retryCount++;
             }
+          
 	
         }
    }  

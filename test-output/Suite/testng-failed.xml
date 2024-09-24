@@ -5,11 +5,10 @@
     <listener class-name="utilities.ExtentReportManager_utility"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
-    <parameter name="browser" value="edge"/>
+    <parameter name="browser" value="firefox"/>
     <classes>
       <class name="testCase.TC_001_Login">
         <methods>
-          <include name="teardown"/>
           <include name="setup"/>
           <include name="login"/>
         </methods>
